@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="3.css">
+    <title>Quiz</title>
+</head>
+<body onload="getQA()" >
+    <center>
+        <h1 id="finalScore"></h1>
+        <div class="main-div">
+            <div class="inner-div">
+                <h2 class="question">Question</h2>
+                <ul id="optionsLi">
+                    <li><label id="ans1" for="option1"></label> </li>
+                    <li><label id="ans2" for="option2"></label></li>
+                    <li><label id="ans3" for="option3"></label></li>
+                    <li><label id="ans4" for="option4"></label></li>
+                    <button  id="prev">Previous</button>
+                    <button  id="submit">Next</button>
+                    <div id="showscore" class="scorearea"></div>
+                </ul>
+            </div>
+        </div>
+    </center>
+    <!-- <a href="2.html">fdf</a> -->
+    <script src="3-ans.js"></script>
+</body>
+</html>
