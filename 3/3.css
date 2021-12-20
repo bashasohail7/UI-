@@ -47,7 +47,6 @@ button:hover{
 #prev:hover{
     background-color: rgba(238, 171, 3, 0.85);
     transition: 500ms;
-
 }
 button:hover{
     padding: 11px 22px;
