@@ -17,7 +17,7 @@ if(days>7){
 return `${days}d ago`
 }
 var filopenings=openings
-function one() {
+function getJobs() {
     // ago(filopenings[0].date)
     for(let i=0;i<filopenings.length;++i){
         var key=filopenings[i].keywords
@@ -48,12 +48,10 @@ document.getElementById("postings").addEventListener("click",function filter(){
   for (var i = 0; i <buttons.length; i++) {
     buttons[i].onclick = function () {
         selectedKeywords.push(this.innerText)
-    //   alert();
       filopenings=filopenings.filter(x=>x.keywords.includes(this.innerText))
-    //   alert(filopenings)
       console.log(filopenings)
       document.getElementById("postings").innerHTML=""
-      one()
+      getJobs()
       document.getElementById("filter-bg").style.display="block"
   document.getElementById("keywords").innerHTML+=`
   <div class="button">${this.innerText}</div><i class="fas fa-times" onclick="deselect(event)"></i>
@@ -75,7 +73,7 @@ function deselect(event){
     for(let i=0;i<selectedKeywords.length;i++){
         filopenings=filopenings.filter(x=>x.keywords.includes(selectedKeywords[i]))
     }
-    one()
+    getJobs()
     if(selectedKeywords.length==0){
 
        refresh()
@@ -84,13 +82,13 @@ function deselect(event){
 function refresh(){
     filopenings=openings
     document.getElementById("filter-bg").style.display=""
-      one()
+      getJobs()
 }
 document.getElementById("clear").addEventListener('click',()=>{
     filopenings=openings
     document.getElementById("filter-bg").style.display=""
     document.getElementById("postings").innerHTML=""
-      one()
+      getJobs()
 })
 
 
