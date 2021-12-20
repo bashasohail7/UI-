@@ -30,6 +30,7 @@ var countryDetails=[
     {flag:"https://www.worldatlas.com/r/w425/img/flag/us-flag.jpg",Cname:"United States",popul:"323,888,123",region:"North America",capital:"Washington"},
     {flag:"https://www.worldatlas.com/r/w425/img/flag/ve-flag.jpg",Cname:"Venezuela",popul:"39,888,123",region:"South America",capital:"Caracas"},
 ]
+
 var ele=document.querySelector("body");
 var cssObj=window.getComputedStyle(ele,null);
 var bodybgColor;
@@ -76,29 +77,26 @@ country()
         filcountryDetails=countryDetails;
         document.getElementById("main").innerHTML=""
 country()
-
-    }
-   
-    
+ }
 })
 
 document.getElementById("search").addEventListener("keyup",()=>{
     let searchedCountry=document.getElementById("search").value.toLowerCase();
     for(let i=0;i<countryDetails.length;i++){
-        if(searchedCountry==countryDetails[i].Cname.toLowerCase()){
-            alert(searchedCountry)
+        if(searchedCountry==filcountryDetails[i].Cname.toLowerCase()){
             filcountryDetails=countryDetails.filter(x=>x.Cname.toLowerCase()==searchedCountry)
             document.getElementById("main").innerHTML=""
             country()
         }
+        else{
+            document.getElementById("main").innerHTML=`<h4 >No Country found named <span id="result">${searchedCountry} !</span></h4>`
 
+        }
     }
-    
 })
-function toggleCard(){
-}
+
 function togglemode(){
-        if(bodybgColor=="rgb(250, 250, 250)"){
+        if(bodybgColor=="rgb(255, 255, 255)"){
         document.getElementById("mode").classList.remove("fa-moon") 
         document.getElementById("mode").classList.toggle("fa-sun")
         document.getElementById("mode").innerText=" Light Mode"

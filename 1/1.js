@@ -5,27 +5,32 @@ var openings=[
     {pos:"Senior Frontend Developer",companyName:"IB Hubs",type:'Full Time',date:new Date(2021,11,15,15,30),jobLocation:'Hyderabad',keywords:["Senior","Frontend","HTML","CSS","Javascript","Angular","Sass"],logo:"https://d1ov0p6puz91hu.cloudfront.net/logos/iBhubs_logo.svg"},
     {pos:"Software Engineer",companyName:"Atlassian",type:'Full Time',date:new Date(2021,11,14,15,30),jobLocation:'Remote',keywords:["Fullstack","Midweight","Sass","Javascript","React","Ruby"],logo:"https://images.ctfassets.net/8j5aqoy0ts8s/4jySPaEh2mr01RvfkuQoKf/4fe9e1602b683afb023d7a475f19bda1/logo-guideline-2_2x_170912_043411.png"},
 ]
- 
+ var sortingbyDate=function(a,b){
+    return new Date(b.date) - new Date(a.date);
+  }
 ago=(datePost)=>{
 var now=new Date().getTime()
 var distance = now-datePost.getTime();
 var days = Math.floor(distance / (1000 * 60 * 60 * 24));
 if(days>7){
-    var weeks=days%7
+    var weeks=Math.floor(days/7)
     return `${weeks}w ago`
+}
+if(days>30){
+    var mnths=Math.floor(days/30)
+    return `${mnths} ago`
 }
 return `${days}d ago`
 }
-var filopenings=openings
+var filopenings=openings.sort(sortingbyDate)
 function getJobs() {
-    // ago(filopenings[0].date)
     for(let i=0;i<filopenings.length;++i){
         var key=filopenings[i].keywords
     document.getElementById("postings").innerHTML+=`<div class="card">
     <div class="left">
         <div class="logo-div"><img class="logo-img" src="${filopenings[i].logo}"></div>
         <div class="details">
-            <h4 class="comp-name">${filopenings[i].companyName}</h4>
+            <h4 class="comp-name" id="company-${i}">${filopenings[i].companyName}</h4>
             <h3 class="position">${filopenings[i].pos}</h3>
             <p class="misc">${ago(filopenings[i].date)} &nbsp; | &nbsp; ${filopenings[i].type} &nbsp; | &nbsp; ${filopenings[i].jobLocation}</p>
         </div>
@@ -34,21 +39,23 @@ function getJobs() {
 </div>`
 for(let j=0;j<key.length;j++){
     document.getElementById(`right-${i}`).innerHTML+=`<button >${key[j]}</button>`
-
 }
-    }
 
+var curent=new Date();
+var curentDate=curent.getDate();
+if((curentDate-filopenings[i].date.getDate())<5){
+    document.getElementById(`company-${i}`).innerHTML+=`<label>NEW!</label>`
+    }
     document.getElementById("postings").click()
 }
-
+}
 var selectedKeywords=[]
-// var [...args]=selectedKeywords
 document.getElementById("postings").addEventListener("click",function filter(){
     var buttons = document.getElementsByTagName('button');
   for (var i = 0; i <buttons.length; i++) {
     buttons[i].onclick = function () {
         selectedKeywords.push(this.innerText)
-      filopenings=filopenings.filter(x=>x.keywords.includes(this.innerText))
+      filopenings=filopenings.sort(sortingbyDate).filter(x=>x.keywords.includes(this.innerText))
       console.log(filopenings)
       document.getElementById("postings").innerHTML=""
       getJobs()
@@ -75,7 +82,6 @@ function deselect(event){
     }
     getJobs()
     if(selectedKeywords.length==0){
-
        refresh()
     }
 }
