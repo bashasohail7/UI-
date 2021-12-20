@@ -27,7 +27,7 @@ i{
 label{
     margin-left: 10px;
 }
-#submit,#prev{
+button{
     padding: 10px 20px;
     border-radius: 5px;
     background-color: rgb(47, 108, 221);
@@ -41,7 +41,7 @@ label{
     background-color: rgb(240, 181, 33);
     margin-right: 10px;
 }
-#submit:hover{
+button:hover{
     background-color: rgb(47, 108, 221,0.8);
     transition: 500ms;
 
@@ -51,7 +51,7 @@ label{
     transition: 500ms;
 
 }
-#submit:hover,#prev:hover{
+button:hover{
     padding: 11px 22px;
     font-size: 17px;
     transition: 300ms;

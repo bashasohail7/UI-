@@ -4,7 +4,7 @@ const quizDB=[
       b:"Hey Text MarkUp Language",
       c:"HyperText Markup Language",
       d:"HpyerText Makeup Language",
-      ans:"ans1"},
+      ans:"ans3"},
 
       {Ques:"What is the full form of CSS ?",
       a:"Hello to  my land",
@@ -49,7 +49,6 @@ var id=""
 var index=0;
 var chosen;
 var ans;
-// var checkedStatus;
     chosen=localStorage.getItem("tick")
     ans=localStorage.getItem("correct")
     checkedStatus=localStorage.getItem("check")
@@ -61,38 +60,7 @@ var ans;
     var prevchoseId= document.getElementById(choseArr[questionCount-1])
     
   
-function getQA(){
-    // alert(11002)
- 
-    // alert(y)
-    // alert(z)
-   
-//    alert(z)
-    // alert(y)
-    // console.log(z)
-    // alert(typeof x)
-   
-    // alert(typeof a)
-    // console.log((a[0]))
-    // console.log((a[1]))
-    // console.log((a[2]))
-    // console.log((a[3]))
-    // console.log((a[4]))
-    console.log("ticked"+chosen)
-    console.log("ticked array"+choseArr)
-    console.log(ans)
-    console.log(checkedStatus)
-console.log(console.log(chosen[0]))
-console.log(console.log(chosen[1]))
-console.log(console.log(chosen[2]))
-console.log(console.log(chosen[3]))
-console.log(console.log(chosen[4]))
-console.log(console.log(chosen[5]))
-}
-document.querySelector("body").addEventListener("load",()=>{
-    
 
-})
 var score=0;
 function calcula(){
     for(let i=0;i<checkStatusArr.length;i++){
@@ -103,8 +71,6 @@ function calcula(){
 }
 document.body.addEventListener("load",calcula())
 const loadQuestion=()=>{ 
-//    calcula()
-
     document.getElementById("finalScore").innerText="You Scored : "+score
     if(questionCount<1){
         document.getElementById("prev").disabled=true
@@ -119,7 +85,6 @@ const loadQuestion=()=>{
     }
      choseId= document.getElementById(choseArr[questionCount])
 
-    console.log(choseId)
     if(questionCount>3){
       document.getElementById("submit").disabled=true
       document.getElementById("submit").style.cursor="auto"
@@ -132,8 +97,6 @@ const loadQuestion=()=>{
     }
     if(choseId){
 if(choseArr[questionCount]==ansArr[questionCount]){
-    // alert(choseArr[questionCount])
-  
     document.getElementById(choseArr[questionCount]).parentElement.style.background="#4ceb28"
     document.getElementById(choseArr[questionCount]).parentElement.insertAdjacentHTML("afterbegin",'<i  class="fas fa-check"></i> ')
 }
@@ -156,30 +119,16 @@ if(choseId==undefined){
    option3.innerText=quizDB[questionCount].c;
    option4.innerText=quizDB[questionCount].d;
    
-//   alert(x[questionCount])
 }
 loadQuestion();
-const getCheckAnswer=()=>{
-    let answer;
-    answers.forEach((curAnsElem)=>{
-        if(curAnsElem.checked){
-            answer=curAnsElem.id//!vhbvhbk
-   }
-    })
-    return answer
-}
+
 
 //==============================================================================================================
 
 
-const deselectAll=()=>{
-    answers.forEach((curAnsElem)=>{
-        if(curAnsElem.checked){curAnsElem.checked=false}
-    })
-}
+
 
 document.getElementById("prev").addEventListener('click',()=>{
-    // alert("prev")
     if(questionCount>0){
     questionCount--
     var id=questionCount+1;
@@ -187,23 +136,13 @@ document.getElementById("prev").addEventListener('click',()=>{
 
   document.querySelectorAll("i").forEach(x=>x.remove())
   if(choseId){
-//     //   alert(choseArr[id])
-//     //   alert(prevchoseId)
-// //   document.getElementById(choseArr[id]).parentElement.style.backgroundColor="white"
   document.getElementById(choseArr[id]).parentElement.style.backgroundColor="white"}
   if(choseId==undefined){
-// alert(1)
-console.log(choseId)
-// document.getElementById(choseArr[id]).parentElement.style.backgroundColor="white"
-
   }
   loadQuestion()}
- 
 
 })
 submit.addEventListener('click',()=>{
-    // alert("next")
-    // questionCount++
   questionCount++
   var id=questionCount-1;
   document.querySelectorAll("i").forEach(x=>x.remove())
@@ -216,9 +155,5 @@ submit.addEventListener('click',()=>{
       
 }
   loadQuestion()
-//   deselectAll();
-  
-
-
 })
 
