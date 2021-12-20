@@ -7,13 +7,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="3.css">
     <title>Quiz</title>
+    <style>
+     
+    </style>
 </head>
 <body  >
+    <div id="help">
+        <p>1.If <b>red</b> color is the background for a option,it means you have selcted it and it's <b>wrong</b> option</p>
+        <p>2.If <b>green</b> color appears in the option <b>with a tick mark</b>,it means you have selcted it and it's the <b> right</b> option</p>
+        <p>3.If <b>green</b> color appears in the option <b>without tick mark</b>,it's the unattempted question and it's the right option</p>
+        </div>
     <center>
         <h1 id="finalScore"></h1>
+      <div id="attempts">
+        <p>Right: <span id="rightAttempt"></span></p>
+        <p> Wrong: <span id="wrongAttempt"></span></p>
+        <p>Unattempted: <span id="unAttempt"></span></p> 
+      </div>
         <div class="main-div">
             <div class="inner-div">
-                <h2 class="question">Question</h2>
                 <ul id="optionsLi">
                     <li><label id="ans1" for="option1"></label> </li>
                     <li><label id="ans2" for="option2"></label></li>

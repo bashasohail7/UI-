@@ -62,11 +62,26 @@ var ans;
   
 
 var score=0;
+var rightQ=0;
+var wrongQ=0;
+var unattemptQ=0
 function calcula(){
     for(let i=0;i<checkStatusArr.length;i++){
-        if(checkStatusArr[i]==="true"){ score+=4}
-        if(checkStatusArr[i]==="false"){score--}
-        if(checkStatusArr[i]==="sohail"){score+=0}
+        if(checkStatusArr[i]==="true"){
+           score+=4
+           rightQ++
+          }
+        if(checkStatusArr[i]==="false"){
+          score--
+          wrongQ++
+        }
+        if(checkStatusArr[i]==="sohail"){
+          score+=0
+          unattemptQ++
+        }
+        document.getElementById("rightAttempt").innerText=rightQ
+        document.getElementById("wrongAttempt").innerText=wrongQ
+        document.getElementById("unAttempt").innerText=unattemptQ
     }
 }
 document.body.addEventListener("load",calcula())
@@ -113,7 +128,6 @@ if(choseId==undefined){
     document.getElementById(ansArr[questionCount]).parentElement.style.background="#3add14"
     
 }
-   question.innerText= quizDB[questionCount].Ques;
    option1.innerText=quizDB[questionCount].a;
    option2.innerText=quizDB[questionCount].b;
    option3.innerText=quizDB[questionCount].c;
